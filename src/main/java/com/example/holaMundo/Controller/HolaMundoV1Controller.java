@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class HolaMundoV1Controller {
     @GetMapping
     public String holaMundo() {
-        return "hola mundo v1.0.0";
+        return "hola mundo v1.0.0- bug corregido v1.1.1";
     }
     @PostMapping
     public String despedida() {
