@@ -1,7 +1,7 @@
 package com.example.holaMundo.Controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,18 +11,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/api/v1")
 public class HolaMundoV1Controller {
     @GetMapping
-    public String holaMundo(@AuthenticationPrincipal Jwt jwt) {
-        String usuario = jwt.getSubject();
-        return "hola mundo v1.0.0- bug corregido v1.1.1 "+usuario;
+    public String saludo(@AuthenticationPrincipal Jwt jwt) {
+        var usuario= jwt.getClaims();
+        return "hola mundo - correccion bug v1.1.1 informacion de autenticacion: "+usuario;
     }
     @PostMapping
-    public String despedida(@AuthenticationPrincipal Jwt jwt) {
-        String usuario = jwt.getSubject();
-        return "despedida V1.1.0 "+usuario;
+    public String despedida() {
+        return "adios v1.1.0";
     }
-
     @GetMapping("/public")
-    public String endpointLibre() {
-        return "enspoint sin validacion";
+    public String publicos() {
+        return "Este es un endpoint publico";
     }
+    
 }
